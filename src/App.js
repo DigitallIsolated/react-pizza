@@ -2,7 +2,7 @@ import "./assets/scss/app.scss";
 import Header from "./components/pages/home/header/Header";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import HomePage from "./components/HomePage";
+import HomePage from "./components/pages/home/HomePage";
 import { Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getCart } from "./redux/cartSlice";

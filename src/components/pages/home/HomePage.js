@@ -1,8 +1,8 @@
 import React from "react";
-import Categories from "./pages/home/content/Categories";
-import Sort from "./pages/home/content/Sort";
-import ContentTitle from "./pages/home/content/ContentTitle";
-import PizzaCardsList from "./pages/home/content/PizzaCardsList";
+import Categories from "./content/Categories";
+import Sort from "./content/Sort";
+import ContentTitle from "./content/ContentTitle";
+import PizzaCardsList from "./content/PizzaCardsList";
 
 const HomePage = ({ list }) => {
   return (
