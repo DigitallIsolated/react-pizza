@@ -1,13 +1,24 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import {getCart, getCount, getTotalPrice} from "../../../redux/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  clearCart,
+  getCart,
+  getCount,
+  getTotalPrice,
+} from "../../../redux/cartSlice";
 import CartItem from "./CartItem";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
-
   const cart = useSelector(getCart);
   const count = useSelector(getCount);
   const price = useSelector(getTotalPrice);
+
+  const dispatch = useDispatch();
+
+  const clear = () => {
+
+  }
 
   return (
     <div className="content">
@@ -84,12 +95,15 @@ const Cart = () => {
                 />
               </svg>
 
-              <span>Очистить корзину</span>
+              <span onClick={() => dispatch(clearCart())}>
+                Очистить корзину
+              </span>
             </div>
           </div>
           <div className="content__items">
-            {cart.map((pizza) => (
+            {cart.map((pizza, index) => (
               <CartItem
+                index={index}
                 name={pizza.name}
                 size={pizza.size}
                 price={pizza.price}
@@ -110,10 +124,7 @@ const Cart = () => {
               </span>
             </div>
             <div className="cart__bottom-buttons">
-              <a
-                href="/"
-                className="button button--outline button--add go-back-btn"
-              >
+              <div className="button button--outline button--add go-back-btn">
                 <svg
                   width="8"
                   height="14"
@@ -129,9 +140,10 @@ const Cart = () => {
                     strokeLinejoin="round"
                   />
                 </svg>
-
-                <span>Вернуться назад</span>
-              </a>
+                <Link to={"/"}>
+                  <span>Вернуться назад</span>
+                </Link>
+              </div>
               <div className="button pay-btn">
                 <span>Оплатить сейчас</span>
               </div>

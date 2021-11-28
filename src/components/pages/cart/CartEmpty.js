@@ -1,6 +1,7 @@
 import React from "react";
 
 import emptyCart from "../../../assets/img/empty-cart.png";
+import {Link} from "react-router-dom";
 
 const CartEmpty = () => {
   return (
@@ -17,7 +18,9 @@ const CartEmpty = () => {
           </p>
           <img src={emptyCart} alt="Empty cart" />
           <a href="/" className="button button--black">
-            <span>Вернуться назад</span>
+            <Link to={'/'}>
+              <span>Вернуться назад</span>
+            </Link>
           </a>
         </div>
       </div>
