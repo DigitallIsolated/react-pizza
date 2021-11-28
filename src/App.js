@@ -1,15 +1,18 @@
 import "./assets/scss/app.scss";
 import Header from "./components/pages/home/header/Header";
-import Categories from "./components/pages/home/content/Categories";
-import Sort from "./components/pages/home/content/Sort";
-import ContentTitle from "./components/pages/home/content/ContentTitle";
-import PizzaCardsList from "./components/pages/home/content/PizzaCardsList";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { BrowserRouter as Router } from "react-router-dom";
+import HomePage from "./components/HomePage";
+import { Route, Routes } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getCart } from "./redux/cartSlice";
+import CartEmpty from "./components/pages/cart/CartEmpty";
+import Cart from "./components/pages/cart/Cart";
 
 function App() {
   const [list, setList] = useState([]);
+
+  const cart = useSelector(getCart);
 
   useEffect(() => {
     axios
@@ -18,21 +21,16 @@ function App() {
   }, [list]);
 
   return (
-    <Router>
-      <div className="wrapper">
-        <Header />
-        <div className="content">
-          <div className="container">
-            <div className="content__top">
-              <Categories />
-              <Sort />
-            </div>
-            <ContentTitle />
-            <PizzaCardsList list={list} />
-          </div>
-        </div>
-      </div>
-    </Router>
+    <div className="wrapper">
+      <Header />
+      <Routes>
+        <Route path={"/"} element={<HomePage list={list} />} />
+        <Route
+          path={"/cart"}
+          element={cart.length === 0 ? <CartEmpty /> : <Cart />}
+        />
+      </Routes>
+    </div>
   );
 }
 
