@@ -17,11 +17,11 @@ const CartEmpty = () => {
             Для того, чтобы заказать пиццу, перейди на главную страницу.
           </p>
           <img src={emptyCart} alt="Empty cart" />
-          <a href="/" className="button button--black">
+          <div className="button button--black">
             <Link to={'/'}>
               <span>Вернуться назад</span>
             </Link>
-          </a>
+          </div>
         </div>
       </div>
     </div>
