@@ -2,7 +2,12 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CartItem from "./CartItem";
 import { Link } from "react-router-dom";
-import {clearCart, getCart, getCount, getTotalPrice} from "../../../redux/cartSlice";
+import {
+  clearCart,
+  getCart,
+  getCount,
+  getTotalPrice,
+} from "../../../redux/cartSlice";
 
 const Cart = () => {
   const cart = useSelector(getCart);
@@ -99,6 +104,7 @@ const Cart = () => {
                 price={pizza.price}
                 type={pizza.type}
                 img={pizza.imgUrl}
+                count={pizza.count}
               />
             ))}
           </div>
