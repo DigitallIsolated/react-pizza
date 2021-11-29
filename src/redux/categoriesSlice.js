@@ -9,7 +9,6 @@ const categoriesSlice = createSlice({
       "Вегетарианская",
       "Гриль",
       "Острые",
-      "Закрытые",
     ],
     activeCategory: 0,
   },

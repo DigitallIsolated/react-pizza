@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Button } from "@mui/material";
-import { addCount, addToCart, setTotalPrice } from "../../../../redux/cartSlice";
+import { addToCart } from "../../../../redux/cartSlice";
 
 const PizzaCardItem = ({ name, types, imgUrl, sizes, price }) => {
-
   const [activeIndexSize, setActiveIndexSize] = useState(0);
   const [activeIndexType, setActiveIndexType] = useState(0);
 
   const dispatch = useDispatch();
 
   const add = () => {
-    dispatch(addCount());
-    dispatch(setTotalPrice(price));
     dispatch(
       addToCart({
         name: name,
@@ -20,7 +17,7 @@ const PizzaCardItem = ({ name, types, imgUrl, sizes, price }) => {
         size: sizes[activeIndexSize],
         imgUrl: imgUrl,
         price: price,
-        count: 1
+        count: 1,
       })
     );
   };
