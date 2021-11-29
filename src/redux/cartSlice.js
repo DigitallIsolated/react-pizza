@@ -34,11 +34,32 @@ const cartSlice = createSlice({
       state.totalPrice += item.price / item.count;
       state.countOfPizzas += 1;
     },
+    decrement: (state, action) => {
+      const item = state.shoppingCart[action.payload];
+      const price = item.price;
+
+      if (item.count > 1) {
+        item.price -= price / item.count;
+        item.count -= 1;
+
+        state.totalPrice -= item.price / item.count;
+      } else {
+        state.totalPrice -= state.shoppingCart[0].price;
+        state.shoppingCart.splice(action.payload, 1);
+      }
+
+      state.countOfPizzas -= 1;
+    },
   },
 });
 
-export const { addToCart, deleteFromCart, clearCart, addCount } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  deleteFromCart,
+  clearCart,
+  addCount,
+  decrement
+} = cartSlice.actions;
 
 export const getTotalPrice = (state) => state.cart.totalPrice;
 export const getCount = (state) => state.cart.countOfPizzas;
