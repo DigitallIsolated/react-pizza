@@ -1,5 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const { isMatch } = require("underscore");
+
+const objectsEquals = (object, list) => {
+  const indexes = [];
+
+  list.map((item, index) =>
+    isMatch(item, {
+      type: object.type,
+      size: object.size,
+      name: object.name,
+    })
+      ? indexes.push(index)
+      : null
+  );
+
+  return indexes;
+};
+
 const cartSlice = createSlice({
   name: "cartSlice",
   initialState: {
@@ -9,7 +27,16 @@ const cartSlice = createSlice({
   },
   reducers: {
     addToCart: (state, action) => {
-      state.shoppingCart.push(action.payload);
+      const sameObjects = objectsEquals(action.payload, state.shoppingCart);
+
+      if (sameObjects.length !== 0) {
+        for (let i of sameObjects) {
+          state.shoppingCart[i].price += action.payload.price;
+          state.shoppingCart[i].count += action.payload.count;
+        }
+      } else {
+        state.shoppingCart.push(action.payload);
+      }
       state.totalPrice += action.payload.price;
       state.countOfPizzas += 1;
     },

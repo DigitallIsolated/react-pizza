@@ -7,7 +7,6 @@ const Categories = () => {
 
   const [activeIndex, setActiveIndex] = useState(0);
 
-
   return (
     <div className="categories">
       <ul>
