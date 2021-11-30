@@ -1,3 +1,3 @@
 # React pizza project
 
-A simple website created using redux toolkit and react js 
+A simple website created using redux, redux-toolkit, react-router-dom, underscore, react-js 
