@@ -3,17 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 const categoriesSlice = createSlice({
   name: "categoriesSlice",
   initialState: {
-    categoriesList: [
-      "Все",
-      "Мясные",
-      "Вегетарианская",
-      "Гриль",
-      "Острые",
-    ],
+    categoriesList: ["Все", "Мясные", "Вегетарианская", "Гриль", "Острые"],
     activeCategory: 0,
   },
   reducers: {
-    setActiveIndex: (state, action) => void (state.activeCategory = action.payload),
+    setActiveIndex: (state, action) => {
+      void (state.activeCategory = action.payload);
+    },
   },
 });
 export const { setActiveIndex } = categoriesSlice.actions;

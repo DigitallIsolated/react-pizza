@@ -1,16 +1,12 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  getActive,
-  getList,
-  setActiveIndex,
-} from "../../../../redux/categoriesSlice";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { getList } from "../../../../redux/categoriesSlice";
 
 const Categories = () => {
   const list = useSelector(getList);
-  const activeIndex = useSelector(getActive);
 
-  const dispatch = useDispatch();
+  const [activeIndex, setActiveIndex] = useState(0);
+
 
   return (
     <div className="categories">
@@ -18,7 +14,7 @@ const Categories = () => {
         {list.map((category, index) => (
           <li
             className={index === activeIndex ? "active" : null}
-            onClick={() => dispatch(setActiveIndex(index))}
+            onClick={() => setActiveIndex(index)}
           >
             {category}
           </li>

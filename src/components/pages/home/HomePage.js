@@ -4,7 +4,7 @@ import Sort from "./content/Sort";
 import ContentTitle from "./content/ContentTitle";
 import PizzaCardsList from "./content/PizzaCardsList";
 
-const HomePage = ({ list }) => {
+const HomePage = () => {
   return (
     <div className="content">
       <div className="container">
@@ -13,7 +13,7 @@ const HomePage = ({ list }) => {
           <Sort />
         </div>
         <ContentTitle />
-        <PizzaCardsList list={list} />
+        <PizzaCardsList />
       </div>
     </div>
   );

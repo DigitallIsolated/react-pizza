@@ -28,7 +28,6 @@ const cartSlice = createSlice({
       const price = item.price;
 
       item.price += price / item.count;
-
       item.count += 1;
 
       state.totalPrice += item.price / item.count;
@@ -36,15 +35,14 @@ const cartSlice = createSlice({
     },
     decrement: (state, action) => {
       const item = state.shoppingCart[action.payload];
-      const price = item.price;
 
       if (item.count > 1) {
-        item.price -= price / item.count;
+        item.price -= item.price / item.count;
         item.count -= 1;
 
         state.totalPrice -= item.price / item.count;
       } else {
-        state.totalPrice -= state.shoppingCart[0].price;
+        state.totalPrice -= state.shoppingCart[action.payload].price;
         state.shoppingCart.splice(action.payload, 1);
       }
 
@@ -53,13 +51,8 @@ const cartSlice = createSlice({
   },
 });
 
-export const {
-  addToCart,
-  deleteFromCart,
-  clearCart,
-  addCount,
-  decrement
-} = cartSlice.actions;
+export const { addToCart, deleteFromCart, clearCart, addCount, decrement } =
+  cartSlice.actions;
 
 export const getTotalPrice = (state) => state.cart.totalPrice;
 export const getCount = (state) => state.cart.countOfPizzas;

@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { getActiveIndex, getList, setActiveIndex } from "../../../../redux/sortSlice";
+import {
+  getActiveIndex,
+  getList,
+  setActiveIndex,
+} from "../../../../redux/sortSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import ClickAwayListener from "@mui/material/ClickAwayListener";
